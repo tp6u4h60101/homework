@@ -15,13 +15,13 @@
             background-color: #f2f2f2;
             padding: 10px;
             border-radius: 5px;
-            text-align: center; /* Center-align text in header */
+            text-align: center; 
         }
 
         section {
             margin-top: 20px;
-            text-align: center; /* Center-align text in sections */
-            max-width: 600px; /* Set your desired max-width */
+            text-align: center;
+            max-width: 600px; 
             width: 100%;
             margin-left: auto;
             margin-right: auto;
@@ -32,6 +32,7 @@
             height: auto;
             border-radius: 5px;
             margin-top: 10px;
+            cursor: pointer; 
         }
     </style>
 </head>
@@ -48,15 +49,27 @@
     </section>
 
     <section>
-        <h2>自我介紹</h2>
-        <p>我擅長繪圖與製作2D動畫模型，目前正在自學3D建模。</p>
-       <p> 雖然有點扯，但因為想自己製作一款遊戲所以轉系跑來資工玩。</p>
+        <h2>興趣與專長</h2>
+        <p>我擅長繪圖與製作2D動畫模型，目前正在自學3D建模。
+        雖然有點扯，但因為想自己製作一款遊戲所以轉系跑來資工玩。</p>
     </section>
 
     <section>
         <h2>圖片展示</h2>
-        <img src="images/1690705882375.gif" alt="展示圖片">
+        <!-- Add class 'gallery-image' for JavaScript handling -->
+        <img class="gallery-image" src="images/1690705882375.gif" alt="展示圖片" onclick="nextImage()">
+        <img class="gallery-image" src="images/1701519680044.gif" alt="第二張圖片" onclick="nextImage()">
     </section>
+
+    <script>
+        var currentIndex = 0;
+
+        function nextImage() {
+            var images = document.getElementsByClassName('gallery-image');
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
 
 </body>
 </html>
