@@ -15,24 +15,52 @@
             background-color: #f2f2f2;
             padding: 10px;
             border-radius: 5px;
-            text-align: center; 
+            text-align: center; /* Center-align text in header */
         }
 
         section {
             margin-top: 20px;
-            text-align: center;
-            max-width: 600px; 
+            text-align: center; /* Center-align text in sections */
+            max-width: 600px; /* Set your desired max-width */
             width: 100%;
             margin-left: auto;
             margin-right: auto;
         }
 
-        img {
+        .gallery-container {
+            position: relative;
+            max-width: 100%;
+            margin-top: 10px;
+        }
+
+        .gallery-image {
             max-width: 100%;
             height: auto;
             border-radius: 5px;
-            margin-top: 10px;
-            cursor: pointer; 
+            cursor: pointer; /* Add cursor pointer to indicate it's clickable */
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .gallery-image.active {
+            opacity: 1;
+        }
+
+        .next-button {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
         }
     </style>
 </head>
@@ -56,18 +84,22 @@
 
     <section>
         <h2>圖片展示</h2>
-        <!-- Add class 'gallery-image' for JavaScript handling -->
-        <img class="gallery-image" src="images/1690705882375.gif" alt="展示圖片" onclick="nextImage()">
-        <img class="gallery-image" src="images/1701519680044.gif" alt="第二張圖片" onclick="nextImage()">
+        <div class="gallery-container">
+            <!-- Add class 'gallery-image' for JavaScript handling -->
+            <img class="gallery-image active" src="images/1690705882375.gif" alt="展示圖片">
+            <img class="gallery-image" src="images/1701519680044.gif" alt="第二張圖片">
+            <button class="next-button" onclick="nextImage()">下一張</button>
+        </div>
     </section>
 
     <script>
         var currentIndex = 0;
+        var images = document.getElementsByClassName('gallery-image');
 
         function nextImage() {
-            var images = document.getElementsByClassName('gallery-image');
+            images[currentIndex].classList.remove('active');
             currentIndex = (currentIndex + 1) % images.length;
-            images[currentIndex].scrollIntoView({ behavior: 'smooth' });
+            images[currentIndex].classList.add('active');
         }
     </script>
 
