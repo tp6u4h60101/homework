@@ -25,6 +25,7 @@
             width: 100%;
             margin-left: auto;
             margin-right: auto;
+            position: relative;
         }
 
         .gallery-container {
@@ -40,7 +41,8 @@
             cursor: pointer; /* Add cursor pointer to indicate it's clickable */
             position: absolute;
             top: 0;
-            left: 0;
+            left: 50%;
+            transform: translateX(-50%);
             opacity: 0;
             transition: opacity 0.5s ease-in-out;
         }
@@ -51,9 +53,9 @@
 
         .next-button {
             position: absolute;
-            top: -40px; /* Adjust the distance above the images */
+            top: 50%;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translate(-50%, -50%);
             background-color: #808080; /* Gray background color */
             color: white;
             border: none;
@@ -78,17 +80,17 @@
 
     <section>
         <h2>興趣與專長</h2>
-        <p>我擅長繪圖與製作2D動畫模型，目前正在自學3D建模。</p>
-        <p>雖然有點扯，但因為想自己製作一款遊戲所以轉系跑來資工玩。</p>
+        <p>我擅長繪圖與製作2D動畫模型，目前正在自學3D建模。
+        雖然有點扯，但因為想自己製作一款遊戲所以轉系跑來資工玩。</p>
     </section>
 
     <section>
         <h2>圖片展示</h2>
         <div class="gallery-container">
-            <button class="next-button" onclick="nextImage()">NEXT</button>
             <!-- Add class 'gallery-image' for JavaScript handling -->
             <img class="gallery-image active" src="images/1690705882375.gif" alt="展示圖片">
             <img class="gallery-image" src="images/1701519680044.gif" alt="第二張圖片">
+            <button class="next-button" onclick="nextImage()">下一張</button>
         </div>
     </section>
 
